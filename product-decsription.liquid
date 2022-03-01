@@ -1,0 +1,37 @@
+<div class="collection-descr short-descr"> 
+        {% if show_coll_desc %}
+        {% assign desc-short =  product.description | split: '<span start_des=""></span>' | last %}
+        {%  assign desc-short1 = desc-short | split: '<span end_des=""></span>' | first | remove: '<p>' | remove: '</p>' %}  
+        <span class="desc-p" >{{ desc-short1 | truncate: 120, ". . . "}} <br> <a class="readmore" href="#">Show More &#62;</a> </span>  
+        
+          {% endif %}
+       </div>
+        
+       <div class="collection-descr full-descr"> 
+        {% if show_coll_desc %}
+        {% assign desc-full =  product.description | split: '<span start_des=""></span>' | last %}
+        {%  assign desc-full1 = desc-full | split: '<span end_des=""></span>' | first | remove: '<p>' | remove: '</p>' %}  
+        <span class="desc-p" >{{ desc-full1 }} <br><a class="readless" href="#">&#60; Show Less</a></span>  
+        
+          {% endif %}
+       </div>
+       
+       <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+ <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+ <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> 
+<script>
+$('.readmore').click(function (event) {
+  event.preventDefault();
+  var descriptionFull = document.querySelector('.full-descr');
+  descriptionFull.style.display = 'block';
+  var descriptionShort = document.querySelector('.short-descr');
+  descriptionShort.style.display = 'none';
+});
+$('.readless').click(function (event) {
+  event.preventDefault();
+  var descriptionFull = document.querySelector('.full-descr');
+  descriptionFull.style.display = 'none';
+  var descriptionShort = document.querySelector('.short-descr');
+  descriptionShort.style.display = 'block';
+});      
+</script>
